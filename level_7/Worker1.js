@@ -102,6 +102,7 @@ function fromRedCoinToAnotherWorker() {
     goStraight(1)
     throwItem(0)
     turnRight()
+    stop(11)
 }
 
 function fromRightBorderToTurnOnLeftPedal() {
@@ -146,7 +147,6 @@ function stop(round) {
 function waitAnotherWorker() {
     while (!SyncWorkers()) {
         DoNothing()
-        totalRound = 0
     }
 }
 
