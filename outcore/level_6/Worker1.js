@@ -1,5 +1,3 @@
-let totalRound = 0
-
 init()
 getCoinToDiamondOutputer()
 fromOutputerToGetCoinThenToOutputer()
@@ -53,38 +51,32 @@ function fromOutputerToPedal() {
 function goStraight(step) {
     for (let i = 0; i < step; i++) {
         MoveForward()
-        totalRound++
     }
 }
 
 function turnRight() {
     TurnRight()
-    totalRound++
 }
 
 function turnLeft() {
     TurnLeft()
-    totalRound++
 }
 
 function turnBack() {
     for (let i = 0; i < 2; i++) {
         TurnLeft()
-        totalRound++
     }
 }
 
 function stop(round) {
     for (let i = 0; i < round; i++) {
         DoNothing()
-        totalRound++
     }
 }
 
 function waitAnotherWorker() {
     while (!SyncWorkers()) {
         DoNothing()
-        totalRound = 0
     }
 }
 
@@ -94,7 +86,6 @@ function log(msg) {
 
 function respondOwnItems() {
     const items = GetWorkerInventoryItems()
-    totalRound++
     return items
 }
 

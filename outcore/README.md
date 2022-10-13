@@ -1,4 +1,4 @@
-# 遊戲名稱： Outcore
+## 遊戲： [Outcore](https://store.steampowered.com/app/1275670/Outcore_Desktop_Adventure/)
 
 ## 說明：
 
