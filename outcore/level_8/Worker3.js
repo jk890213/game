@@ -3,20 +3,26 @@ let totalRound = 0
 init()
 fromLeftTopPedalToLeftBottomPedal()
 fromLeftBottomPedalToReadyGetCoins()
-getCoinsToTopOutputer()
+getLeftCoinsToTopOutputer()
 fromTopOutputerToBottomPedal()
 fromBottomPedalToTopPedal()
 fromTopPedalToGetCoins()
-fromCoinsAreaToMiddleOutputer()
+fromLeftCoinsAreaToMiddleOutputer()
 fromMiddleOutputerToLeftBottomPedal()
 fromBottomPedalToTopPedal()
-// getBorderCoins
-
-// fromTopPedalToGetCoins()
-// fromCoinsAreaToTopOutputer()
+getBorderCoinsToTopOupter()
+fromTopOutputerToBottomPedal()
+stop(11)
 
 while (true) {
-    stop(10)
+    fromBottomPedalToTopPedal()
+    fromTopPedalToGetCoins()
+    fromLeftCoinsAreaToMiddleOutputer()
+    fromMiddleOutputerToLeftBottomPedal()
+    fromBottomPedalToTopPedal()
+    getBorderCoinsToTopOupter()
+    fromTopOutputerToBottomPedal()
+    stop(11)
 }
 
 function init() {
@@ -35,7 +41,7 @@ function fromLeftBottomPedalToReadyGetCoins() {
     stop(4)
 }
 
-function getCoinsToTopOutputer() {
+function getLeftCoinsToTopOutputer() {
     goStraight(4)
     turnLeft()
     goStraight(1)
@@ -74,7 +80,7 @@ function fromTopPedalToGetCoins() {
     goStraight(3)
 }
 
-function fromCoinsAreaToMiddleOutputer() {
+function fromLeftCoinsAreaToMiddleOutputer() {
     turnRight()
     goStraight(2)
     stop(4)
@@ -94,13 +100,21 @@ function fromMiddleOutputerToLeftBottomPedal() {
     goStraight(3)
 }
 
+function getBorderCoinsToTopOupter() {
+    goStraight(11)
+    turnRight()
+    goStraight(6)
+    turnRight()
+    goStraight(1)
+    turnRight()
+    goStraight(1)
+    turnLeft()
+    goStraight(4)
+    turnLeft()
+    goStraight(1)
+    stop(5)
+}
 
-// function fromTopOutputerToLeftTopPedal() {
-//     goStraight(6)
-//     turnRight()
-//     goStraight(6)
-//     turnBack()
-// }
 
 // Library
 function goStraight(step) {

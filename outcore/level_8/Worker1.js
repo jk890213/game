@@ -23,13 +23,13 @@ function init() {
     turnRight()
     goStraight(5)
     turnRight()
+    stop(1)
 }
 
 function fromPedalToReadyGetCoins() {
     goStraight(4)
     turnRight()
     goStraight(2)
-    stop(2)
 }
 
 function getCoinsToBottomBorder() {
@@ -43,7 +43,7 @@ function getCoinsToLeftBorder() {
     turnRight()
     goStraight(3)
     turnRight()
-    goStraight(12)    
+    goStraight(12)
 }
 
 function getCoins() {
