@@ -8,8 +8,11 @@ fromBottomBorderToPedal()
 fromPedalToReadyGetCoins()
 getCoinsToLeftBorder()
 throwItemsAlongBorder(5)
-log(totalRound)
-// 123
+fromLeftBorderToPedal()
+fromPedalToReadyGetCoins()
+getCoinsToBottomBorder()
+throwItemsAlongBorder(5)
+// log(totalRound)
 
 while (true) {
     stop(10)
@@ -65,13 +68,18 @@ function throwItemsAlongBorder(quantity) {
     }
 }
 
-function fromBottomBorderToPedal(quantity) {
+function fromBottomBorderToPedal() {
     turnRight()
     goStraight(6)
     turnRight()
     goStraight(4)
 }
 
+function fromLeftBorderToPedal() {
+    turnBack()
+    goStraight(2)
+    turnLeft()
+}
 
 
 // function fromOutputerToPedal() {

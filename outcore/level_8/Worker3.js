@@ -7,10 +7,16 @@ getCoinsToTopOutputer()
 fromTopOutputerToBottomPedal()
 fromBottomPedalToTopPedal()
 fromTopPedalToGetCoins()
-// 96
+fromCoinsAreaToMiddleOutputer()
+fromMiddleOutputerToLeftBottomPedal()
+fromBottomPedalToTopPedal()
+// getBorderCoins
+
+// fromTopPedalToGetCoins()
+// fromCoinsAreaToTopOutputer()
 
 while (true) {
-    stop(20)
+    stop(10)
 }
 
 function init() {
@@ -66,8 +72,26 @@ function fromTopPedalToGetCoins() {
     goStraight(1)
     turnRight()
     goStraight(3)
+}
+
+function fromCoinsAreaToMiddleOutputer() {
     turnRight()
     goStraight(2)
+    stop(4)
+}
+
+function fromCoinsAreaToTopOutputer() {
+    goStraight(1)
+    turnRight()
+    goStraight(2)
+    stop(4)
+}
+
+function fromMiddleOutputerToLeftBottomPedal() {
+    turnRight()
+    goStraight(4)
+    turnRight()
+    goStraight(3)
 }
 
 

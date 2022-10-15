@@ -1,25 +1,27 @@
 let totalRound = 0
 
 init()
-getCoinsToPedal()
-fromPedalToBottomOutputer()
-fromBottomOutputerToRightPedal()
-fromRightPedalToGetBorderCoins()
-fromBorderToCollector()
+produceRedCoinAndEarnCoins()
+produceRedCoinToAnotherWorkerAndEarnCoin()
+
 fromCollectorToReadyGetCoins()
 getCoinsToPedal()
-fromPedalToBottomOutputer()
-// 126
-fromBottomOutputerToGetRedCoins()
-fromRedCoinsToAnotherWorker()
 
 while (true) {
     stop(10)
 }
 function init() {
     goStraight(1)
-    turnRight()    
+    turnRight()
     goStraight(1)
+}
+
+function produceRedCoinAndEarnCoins() {
+    getCoinsToPedal()
+    fromPedalToBottomOutputer()
+    fromBottomOutputerToRightPedal()
+    fromRightPedalToGetBorderCoins()
+    fromCoinBorderToCollector()
 }
 
 function getCoinsToPedal() {
@@ -55,12 +57,22 @@ function fromRightPedalToGetBorderCoins() {
     goStraight(10)
 }
 
-function fromBorderToCollector() {
+function fromCoinBorderToCollector() {
     goStraight(1)
     turnRight()
     goStraight(6)
-    const ownItems = respondOwnItems()
-    stop(ownItems.length - 1)
+    inputAllCoinToCollector()
+}
+
+
+function produceRedCoinToAnotherWorkerAndEarnCoin() {
+    fromCollectorToReadyGetCoins()
+    getCoinsToPedal()
+    fromPedalToBottomOutputer()
+    // 126
+    fromBottomOutputerToGetRedCoins()
+    fromRedCoinsToAnotherWorker()
+    fromRedCoinBorderToCollector()
 }
 
 function fromCollectorToReadyGetCoins() {
@@ -96,6 +108,14 @@ function throwRedCoinsToAlongBorder() {
         turnLeft()
         throwItem(1)
     }
+}
+
+function fromRedCoinBorderToCollector(params) {
+    turnRight()
+    goStraight(9)
+    turnRight()
+    goStraight(6)
+    inputAllCoinToCollector()
 }
 
 
@@ -150,6 +170,11 @@ function respondOwnItems() {
 function throwItem(index) {
     ThrowItem(index)
     totalRound++
+}
+
+function inputAllCoinToCollector() {
+    const ownItems = respondOwnItems()
+    stop(ownItems.length - 1)
 }
 
 // Command in this game:
