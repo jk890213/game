@@ -3,15 +3,22 @@ let totalRound = 0
 init()
 fromPedalToReadyGetCoins()
 getCoinsToBottomBorder()
-throwItemsAlongBorder(5)
+throwItemsAlongBorder()
 fromBottomBorderToPedal()
 fromPedalToReadyGetCoins()
 getCoinsToLeftBorder()
-throwItemsAlongBorder(5)
+throwItemsAlongBorder()
 fromLeftBorderToPedal()
 fromPedalToReadyGetCoins()
 getCoinsToBottomBorder()
-throwItemsAlongBorder(5)
+throwItemsAlongBorder()
+getRedCoinsToOupter()
+fromOutputerToPedal()
+fromPedalToReadyGetCoins()
+getCoinsToLeftBorder()
+throwItemsAlongBorder()
+fromLeftBorderToGetRedCoinToOupter()
+
 // log(totalRound)
 
 while (true) {
@@ -58,9 +65,9 @@ function getCoins() {
     goStraight(2)
 }
 
-function throwItemsAlongBorder(quantity) {
+function throwItemsAlongBorder() {
     throwItem(0)
-    for (let i = 0; i < quantity - 1; i++) {
+    for (let i = 0; i < 5 - 1; i++) {
         turnRight()
         goStraight(1)
         turnLeft()
@@ -81,10 +88,27 @@ function fromLeftBorderToPedal() {
     turnLeft()
 }
 
+function getRedCoinsToOupter() {
+    turnRight()
+    goStraight(6)
+    turnRight()
+    goStraight(2)
+    inputAllCoinsToOupter()
+}
 
-// function fromOutputerToPedal() {
-//     goStraight(2)
-// }
+function fromOutputerToPedal() {
+    goStraight(2)
+}
+
+function fromLeftBorderToGetRedCoinToOupter() {
+    turnBack()
+    goStraight(2)
+    turnRight()
+    goStraight(4)
+    turnBack()
+    goStraight(2)
+    stop(2)
+}
 
 // function fromOutputerToGetRedCoin() {
 //     goStraight(1)
@@ -142,6 +166,11 @@ function waitAnotherWorker() {
 
 function log(msg) {
     ConsoleLog(msg.toString())
+}
+
+function inputAllCoinsToOupter() {
+    const ownItems = respondOwnItems()
+    stop(ownItems.length - 1)
 }
 
 function respondOwnItems() {

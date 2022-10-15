@@ -1,14 +1,11 @@
 let totalRound = 0
+let toAnotherWorkerRound = 0
 
 init()
 produceRedCoinAndEarnCoins()
-produceRedCoinToAnotherWorkerAndEarnCoin()
-
-fromCollectorToReadyGetCoins()
-getCoinsToPedal()
 
 while (true) {
-    stop(10)
+    produceRedCoinToAnotherWorkerAndEarnCoin()
 }
 function init() {
     goStraight(1)
@@ -61,7 +58,7 @@ function fromCoinBorderToCollector() {
     goStraight(1)
     turnRight()
     goStraight(6)
-    inputAllCoinToCollector()
+    inputAllCoinsToCollector()
 }
 
 
@@ -69,7 +66,6 @@ function produceRedCoinToAnotherWorkerAndEarnCoin() {
     fromCollectorToReadyGetCoins()
     getCoinsToPedal()
     fromPedalToBottomOutputer()
-    // 126
     fromBottomOutputerToGetRedCoins()
     fromRedCoinsToAnotherWorker()
     fromRedCoinBorderToCollector()
@@ -97,12 +93,17 @@ function fromRedCoinsToAnotherWorker() {
     turnLeft()
     goStraight(4)
     turnLeft()
-    throwRedCoinsToAlongBorder()
+    if (toAnotherWorkerRound) {
+        throwRedCoinsToAlongBorder(2)
+    }
+    else {
+        throwRedCoinsToAlongBorder(3)
+    }
 }
 
-function throwRedCoinsToAlongBorder() {
+function throwRedCoinsToAlongBorder(quantity) {
     throwItem(1)
-    for (let i = 0; i < 2; i++) {
+    for (let i = 0; i < quantity - 1; i++) {
         turnRight()
         goStraight(1)
         turnLeft()
@@ -110,12 +111,19 @@ function throwRedCoinsToAlongBorder() {
     }
 }
 
-function fromRedCoinBorderToCollector(params) {
+function fromRedCoinBorderToCollector() {
     turnRight()
-    goStraight(9)
+    if (toAnotherWorkerRound) {
+        goStraight(10)
+        toAnotherWorkerRound = 0
+    }
+    else {
+        goStraight(9)
+        toAnotherWorkerRound++
+    }
     turnRight()
     goStraight(6)
-    inputAllCoinToCollector()
+    inputAllCoinsToCollector()
 }
 
 
@@ -172,7 +180,7 @@ function throwItem(index) {
     totalRound++
 }
 
-function inputAllCoinToCollector() {
+function inputAllCoinsToCollector() {
     const ownItems = respondOwnItems()
     stop(ownItems.length - 1)
 }
